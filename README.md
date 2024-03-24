@@ -11,4 +11,6 @@ The Event Ticket Sales Management System is a tool designed for managing the sal
 
 ## Entity diagram
 The organization of the database is depicted in the following entity diagram:
+
+
 ![Example Image](EntityDiagram.drawio.png)

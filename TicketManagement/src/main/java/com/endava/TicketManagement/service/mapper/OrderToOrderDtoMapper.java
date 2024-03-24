@@ -6,9 +6,14 @@ import com.endava.TicketManagement.service.dto.OrderDto;
 import java.time.format.DateTimeFormatter;
 
 public class OrderToOrderDtoMapper {
+    /**
+     * Converts an Order entity to an OrderDto object.
+     *
+     * @param order The Order entity to be converted.
+     * @return The corresponding OrderDto object.
+     */
     public static OrderDto converter(Order order){
         OrderDto orderDto = new OrderDto();
-//        EventToEventDtoMapper eventToEventDtoMapper = new EventToEventDtoMapper();
         String pattern = "dd-MM-yyyy HH:mm";
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
 

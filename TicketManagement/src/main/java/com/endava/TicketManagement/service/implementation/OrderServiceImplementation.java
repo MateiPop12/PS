@@ -25,6 +25,7 @@ public class OrderServiceImplementation implements OrderService {
     private final TicketCategoryRepository ticketCategoryRepository;
     private final CustomerRepository customerRepository;
 
+
     @Autowired
     public OrderServiceImplementation(OrderRepository orderRepository,
                                       TicketCategoryRepository ticketCategoryRepository,
@@ -34,21 +35,47 @@ public class OrderServiceImplementation implements OrderService {
         this.customerRepository = customerRepository;
     }
 
+    /**
+     * Retrieves a list of orders with the given number of tickets.
+     *
+     * @param numberOfTickets The number of tickets to search for.
+     * @return A list of OrderDto objects representing the orders found.
+     */
     @Override
     public List<OrderDto> findByNumberOfTickets(int numberOfTickets) {
         return orderRepository.findByNumberOfTickets(numberOfTickets).stream().map(OrderToOrderDtoMapper::converter).collect(Collectors.toList());
     }
 
+    /**
+     * Retrieves the order associated with the specified customer ID.
+     *
+     * @param customerID The ID of the customer.
+     * @return The OrderDto object representing the order found.
+     */
     @Override
     public OrderDto findByCustomerCustomerID(Long customerID) {
         return OrderToOrderDtoMapper.converter(orderRepository.findByCustomerCustomerID(customerID));
     }
 
+    /**
+     * Retrieves all orders.
+     *
+     * @return A list of OrderDto objects representing all orders.
+     */
     @Override
     public List<OrderDto> findAll() {
         return orderRepository.findAll().stream().map(OrderToOrderDtoMapper::converter).collect(Collectors.toList());
     }
 
+    /**
+     * Creates a new order based on the provided order request and customer ID.
+     *
+     * @param orderRequestDto The order request DTO containing order details.
+     * @param customerID      The ID of the customer placing the order.
+     * @return The OrderDto object representing the newly created order.
+     * @throws IllegalArgumentException If the ticket category ID is null.
+     * @throws EntityNotFoundException  If the ticket category or customer is not found.
+     */
     @Override
     public OrderDto createOrder(OrderRequestDto orderRequestDto, Long customerID) {
 
@@ -80,6 +107,15 @@ public class OrderServiceImplementation implements OrderService {
         return OrderToOrderDtoMapper.converter(order);
     }
 
+    /**
+     * Updates an existing order with the specified details.
+     *
+     * @param orderID            The ID of the order to be updated.
+     * @param newTicketCategoryID The ID of the new ticket category.
+     * @param newNumberOfTickets The new number of tickets for the order.
+     * @return The OrderDto object representing the updated order.
+     * @throws EntityNotFoundException If the order or new ticket category is not found.
+     */
     @Override
     public OrderDto updateOrder(Long orderID, Long newTicketCategoryID, int newNumberOfTickets) {
         Order order = orderRepository.findById(orderID)
@@ -99,6 +135,12 @@ public class OrderServiceImplementation implements OrderService {
         return OrderToOrderDtoMapper.converter(order);
     }
 
+    /**
+     * Deletes an order with the specified ID.
+     *
+     * @param orderId The ID of the order to be deleted.
+     * @throws EntityNotFoundException If the order with the specified ID is not found.
+     */
     public void deleteOrder(Long orderId) {
         Order orderDeleteById = orderRepository.findById(orderId).orElse(null);
         if (orderDeleteById != null) {
