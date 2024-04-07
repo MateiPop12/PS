@@ -33,4 +33,14 @@ public class EventController {
         System.out.println("Request event/all");
         return eventService.findAll();
     }
+
+    @PostMapping("/create")
+    public EventDto CreateEvent(@RequestBody EventDto eventDto){
+        return eventService.createEvent(eventDto);
+    }
+
+    @DeleteMapping("/delete/{eventId}")
+    public void deleteEvent(@PathVariable Long eventId) {
+        eventService.deleteEvent(eventId);
+    }
 }

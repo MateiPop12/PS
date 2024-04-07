@@ -10,4 +10,6 @@ public interface EventService {
     EventDto findByEventName(String name);
     EventDto findByVenueVenueIDAndEventTypeEventTypeName(Long venueID,String eventType);
     List<EventDto> findAll();
+    EventDto createEvent(EventDto eventDto);
+    void deleteEvent(Long eventId);
 }

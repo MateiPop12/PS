@@ -8,9 +8,9 @@ The Event Ticket Sales Management System is a tool designed for managing the sal
 - **Order Management:** Users can view all orders and make edits as necessary.
 - **Order Creation:** New orders can be created by selecting the ticket type (regular or VIP) and specifying the quantity, with the price automatically calculated and displayed.
 - **Search Function:** A search by name function is provided for easier navigation and retrieval of orders and avalabile tickets.
+- **Notify Function:** A function that notifys evety customer when an order is placed.
 
 ## Entity diagram
 The organization of the database is depicted in the following entity diagram:
-
 
 ![Example Image](EntityDiagram.drawio.png)

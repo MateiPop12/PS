@@ -14,7 +14,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @Data
 @Entity
-@JsonSerialize
 @Table(name = "eventType")
 public class EventType {
     @Id

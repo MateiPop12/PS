@@ -67,6 +67,7 @@ public class OrderController {
     @PostMapping(value = "/create/{customerID}", produces = {"application/json"}, consumes = {"application/json"})
     public OrderDto createOrder(@RequestBody OrderRequestDto orderRequestDto, @PathVariable Long customerID) {
         System.out.println(orderRequestDto);
+        orderService.notifyCustomers();
         return orderService.createOrder(orderRequestDto, customerID);
     }
 

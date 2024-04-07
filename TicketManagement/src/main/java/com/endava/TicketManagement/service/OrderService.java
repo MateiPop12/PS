@@ -14,4 +14,5 @@ public interface OrderService {
     OrderDto createOrder(OrderRequestDto orderDto, Long orderID);
     OrderDto updateOrder(Long orderID, Long newTicketCategoryID, int newNumberOfTickets);
     void deleteOrder(Long orderID);
+    void notifyCustomers();
 }
