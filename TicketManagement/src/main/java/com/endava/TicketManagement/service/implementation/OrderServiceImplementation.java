@@ -160,6 +160,7 @@ public class OrderServiceImplementation implements OrderService {
     public void notifyCustomers(){
         List<Customer> customers = customerRepository.findAll();
         for (Customer customer : customers) {
+            //if(customer.getSubscribed==true)
             customerService.update(customer.getCustomerID());
         }
     }
