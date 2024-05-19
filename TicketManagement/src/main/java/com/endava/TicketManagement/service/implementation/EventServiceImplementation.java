@@ -31,21 +31,45 @@ public class EventServiceImplementation implements EventService{
         this.eventTypeService = eventTypeService;
     }
 
+    /**
+     * Finds an event by its name.
+     *
+     * @param eventName the name of the event
+     * @return the EventDto representing the event
+     */
     @Override
     public EventDto findByEventName(String eventName) {
         return EventToEventDtoMapper.converter(eventRepository.findByEventName(eventName));
     }
 
+    /**
+     * Finds an event by its venue ID and event type name.
+     *
+     * @param venueID  the ID of the venue
+     * @param eventType the name of the event type
+     * @return the EventDto representing the event
+     */
     @Override
     public EventDto findByVenueVenueIDAndEventTypeEventTypeName(Long venueID, String eventType) {
         return EventToEventDtoMapper.converter(eventRepository.findByVenueVenueIDAndEventTypeEventTypeName(venueID,eventType));
     }
 
+    /**
+     * Retrieves all events.
+     *
+     * @return a list of EventDto objects representing all events
+     */
     @Override
     public List<EventDto> findAll() {
         return eventRepository.findAll().stream().map(EventToEventDtoMapper::converter).collect(Collectors.toList());
     }
 
+    /**
+     * Creates a new event.
+     *
+     * @param createEventDto the data transfer object containing the event details
+     * @return the created Event entity
+     */
     @Override
     public Event createEvent(CreateEventDto createEventDto) {
 
@@ -61,16 +85,18 @@ public class EventServiceImplementation implements EventService{
         return eventRepository.save(newEvent);
     }
 
+    /**
+     * Deletes an event by its ID.
+     *
+     * @param eventId the ID of the event to be deleted
+     * @throws EntityNotFoundException if the event with the specified ID is not found
+     */
     @Override
     public void deleteEvent(Long eventId) {
         Event event = eventRepository.findById(eventId).orElse(null);
         System.out.println(event.getEventID().toString());
 
-        if (event != null) {
-            eventRepository.delete(event);
-            System.out.println("event deleted successfully");
-        }else {
-            throw new EntityNotFoundException("Event with id " + eventId + " not found");
-        }
+        eventRepository.delete(event);
+        System.out.println("event deleted successfully");
     }
 }

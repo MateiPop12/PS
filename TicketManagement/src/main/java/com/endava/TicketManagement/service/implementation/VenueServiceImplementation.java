@@ -16,14 +16,24 @@ public class VenueServiceImplementation implements VenueService {
         this.venueRepository = venueRepository;
     }
 
+    /**
+     * Retrieves all venues.
+     *
+     * @return a list of Venue objects representing all venues
+     */
     @Override
     public List<Venue> findAll() {
         return venueRepository.findAll().stream().toList();
     }
 
+    /**
+     * Finds a venue by its ID.
+     *
+     * @param id the ID of the venue
+     * @return the Venue object representing the venue
+     */
     @Override
     public Venue findById(Long id) {
         return venueRepository.findByVenueID(id);
     }
-
 }

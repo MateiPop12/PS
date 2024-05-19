@@ -16,7 +16,9 @@ import java.util.List;
 @RequestMapping("/order")
 @CrossOrigin(origins = "http://localhost:5173")
 public class OrderController {
+
     private final OrderService orderService;
+
     @Autowired
     public OrderController(OrderService orderService) {
         this.orderService = orderService;

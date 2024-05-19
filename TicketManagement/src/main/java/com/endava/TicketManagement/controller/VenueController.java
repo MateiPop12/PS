@@ -14,13 +14,24 @@ import java.util.List;
 @RequestMapping("/venue")
 @CrossOrigin("http://localhost:5173")
 public class VenueController {
+
     private final VenueService venueService;
 
+    /**
+     * Constructor for VenueController.
+     *
+     * @param venueService the service used to manage venues.
+     */
     @Autowired
     public VenueController(VenueService venueService) {
         this.venueService = venueService;
     }
 
+    /**
+     * Retrieves a list of all venues.
+     *
+     * @return a list of Venue objects.
+     */
     @GetMapping("/findAll")
     public List<Venue> findAll(){
         return venueService.findAll();

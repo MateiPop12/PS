@@ -14,13 +14,24 @@ import java.util.List;
 @RequestMapping("/eventType")
 @CrossOrigin("http://localhost:5173")
 public class EventTypeController {
+
     private final EventTypeService eventTypeService;
 
+    /**
+     * Constructor for EventTypeController.
+     *
+     * @param eventTypeService the service used to manage event types.
+     */
     @Autowired
     public EventTypeController(EventTypeService eventTypeService) {
         this.eventTypeService = eventTypeService;
     }
 
+    /**
+     * Retrieves a list of all event types.
+     *
+     * @return a list of EventType objects.
+     */
     @GetMapping("/findAll")
     public List<EventType> findAll() {
         return eventTypeService.findAll();
