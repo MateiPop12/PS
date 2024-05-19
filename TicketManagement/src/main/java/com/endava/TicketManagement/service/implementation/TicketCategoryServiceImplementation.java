@@ -13,13 +13,16 @@ import java.util.stream.Collectors;
 public class TicketCategoryServiceImplementation implements TicketCategoryService {
 
     private final TicketCategoryRepository ticketCategoryRepository;
+
     public TicketCategoryServiceImplementation(TicketCategoryRepository ticketCategoryRepository){
         this.ticketCategoryRepository = ticketCategoryRepository;
     }
+
     @Override
     public List<TicketCategoryDto> findAll(){
         return ticketCategoryRepository.findAll().stream().map(TicketCategoryToTicketCategoryDtoMapper::converter).collect(Collectors.toList());
     }
+
     @Override
     public TicketCategoryDto findByTicketCategoryID(Long ticketCategoryId) {
         return TicketCategoryToTicketCategoryDtoMapper.converter(ticketCategoryRepository.findByTicketCategoryID(ticketCategoryId));

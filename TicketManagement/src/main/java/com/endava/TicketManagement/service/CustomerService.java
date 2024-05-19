@@ -10,5 +10,4 @@ import java.util.List;
 public interface CustomerService{
     CustomerDto findByCustomerID(Long customerID);
     List<Customer> findAll();
-    void update(Long id);
 }

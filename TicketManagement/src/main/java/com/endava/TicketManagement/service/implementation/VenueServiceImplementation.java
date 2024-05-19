@@ -20,4 +20,10 @@ public class VenueServiceImplementation implements VenueService {
     public List<Venue> findAll() {
         return venueRepository.findAll().stream().toList();
     }
+
+    @Override
+    public Venue findById(Long id) {
+        return venueRepository.findByVenueID(id);
+    }
+
 }

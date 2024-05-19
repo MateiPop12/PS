@@ -3,15 +3,14 @@ package com.endava.TicketManagement.service.dto;
 import com.endava.TicketManagement.repository.model.Order;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 @JsonSerialize
 public class CustomerDto {
     private Long customerID;

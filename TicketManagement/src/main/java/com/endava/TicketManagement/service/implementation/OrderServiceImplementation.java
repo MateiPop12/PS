@@ -6,19 +6,16 @@ import com.endava.TicketManagement.repository.TicketCategoryRepository;
 import com.endava.TicketManagement.repository.model.Customer;
 import com.endava.TicketManagement.repository.model.Order;
 import com.endava.TicketManagement.repository.model.TicketCategory;
-import com.endava.TicketManagement.service.CustomerService;
 import com.endava.TicketManagement.service.OrderService;
-import com.endava.TicketManagement.service.dto.CustomerDto;
+import com.endava.TicketManagement.service.SubscriberService;
 import com.endava.TicketManagement.service.dto.OrderDto;
 import com.endava.TicketManagement.service.dto.OrderRequestDto;
 import com.endava.TicketManagement.service.mapper.OrderToOrderDtoMapper;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,18 +24,18 @@ public class OrderServiceImplementation implements OrderService {
     private final OrderRepository orderRepository;
     private final TicketCategoryRepository ticketCategoryRepository;
     private final CustomerRepository customerRepository;
-    private final CustomerService customerService;
+    private final SubscriberService subscriberService;
 
 
     @Autowired
     public OrderServiceImplementation(OrderRepository orderRepository,
                                       TicketCategoryRepository ticketCategoryRepository,
                                       CustomerRepository customerRepository,
-                                      CustomerService customerService) {
+                                      SubscriberService subscriberService) {
         this.ticketCategoryRepository = ticketCategoryRepository;
         this.orderRepository = orderRepository;
         this.customerRepository = customerRepository;
-        this.customerService = customerService;
+        this.subscriberService = subscriberService;
     }
 
     /**
@@ -156,12 +153,20 @@ public class OrderServiceImplementation implements OrderService {
         }
     }
 
+    /**
+     * Notifies all subscribed customers of updates.
+     * Retrieves all customers from the customer repository
+     * and iterates through each customer, calling the update
+     * method of the customer service to notify them.
+     * Note: Currently, this method assumes that all customers
+     * are subscribed. Further implementation is required to
+     * handle subscription status and proper notification mechanism.
+     */
     @Override
-    public void notifyCustomers(){
+    public void notifyCustomers() {
         List<Customer> customers = customerRepository.findAll();
-        for (Customer customer : customers) {
-            //if(customer.getSubscribed==true)
-            customerService.update(customer.getCustomerID());
+        for(Customer customer : customers){
+            subscriberService.updateSubscriber(customer.getCustomerID());
         }
     }
 }

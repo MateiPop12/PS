@@ -20,4 +20,9 @@ public class EventTypeServiceImplementation implements EventTypeService {
     public List<EventType> findAll() {
         return eventTypeRepository.findAll().stream().toList();
     }
+
+    @Override
+    public EventType findById(Long id) {
+        return eventTypeRepository.findByEventTypeID(id);
+    }
 }

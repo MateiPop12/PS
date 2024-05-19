@@ -3,9 +3,7 @@ package com.endava.TicketManagement.repository.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -14,7 +12,8 @@ import java.util.List;
 
 @AllArgsConstructor
 @RequiredArgsConstructor
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "event")
 public class Event {
@@ -35,7 +34,7 @@ public class Event {
 
     @Column(name = "eventEndDate")
     @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime getEventEndDate;
+    private LocalDateTime eventEndDate;
 
     @JsonBackReference
     @OneToMany(mappedBy = "event",cascade = CascadeType.ALL,fetch=FetchType.EAGER)

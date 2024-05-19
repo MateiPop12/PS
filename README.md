@@ -10,6 +10,18 @@ The Event Ticket Sales Management System is a tool designed for managing the sal
 - **Search Function:** A search by name function is provided for easier navigation and retrieval of orders and avalabile tickets.
 - **Notify Function:** A function that notifys evety customer when an order is placed.
 
+## End Points
+
+1. Get:
+
+2. Create:
+
+3. Update:
+
+4. Delete:
+
+
+
 ## Observer Pattern
 
 The **Observer Pattern** is a behavioral design pattern where an object, called the subject, maintains a list of its dependents, called observers, and notifies them of any changes in state, usually by calling one of their methods. In the provided classes, we can identify an implementation of the Observer Pattern with the following elements:

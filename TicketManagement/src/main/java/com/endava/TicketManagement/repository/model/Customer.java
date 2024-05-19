@@ -22,4 +22,6 @@ public class Customer {
     @Column(name = "customerEmail")
     private String customerEmail;
 
+//    @Column(name = "subscribed")
+//    private Boolean subscribed;
 }

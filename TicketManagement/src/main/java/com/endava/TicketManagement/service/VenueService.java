@@ -8,4 +8,5 @@ import java.util.List;
 @Component
 public interface VenueService {
     List<Venue> findAll();
+    Venue findById(Long id);
 }

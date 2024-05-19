@@ -1,9 +1,14 @@
 package com.endava.TicketManagement.controller;
 
+import com.endava.TicketManagement.repository.model.Event;
 import com.endava.TicketManagement.service.EventService;
+import com.endava.TicketManagement.service.dto.CreateEventDto;
 import com.endava.TicketManagement.service.dto.EventDto;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +18,7 @@ import java.util.List;
 @CrossOrigin("http://localhost:5173")
 public class EventController {
     private final EventService eventService;
+
     @Autowired
     public EventController(EventService eventService){
         this.eventService = eventService;
@@ -35,12 +41,24 @@ public class EventController {
     }
 
     @PostMapping("/create")
-    public EventDto CreateEvent(@RequestBody EventDto eventDto){
+    public Event CreateEvent(@RequestBody CreateEventDto eventDto){
         return eventService.createEvent(eventDto);
     }
 
+//    @DeleteMapping("/delete/{eventId}")
+//    public void deleteEvent(@PathVariable Long eventId) {
+//        System.out.println("DELETE EVENT");
+//        eventService.deleteEvent(eventId);
+//    }
+
     @DeleteMapping("/delete/{eventId}")
-    public void deleteEvent(@PathVariable Long eventId) {
-        eventService.deleteEvent(eventId);
+    public ResponseEntity<?> deleteEvent(@PathVariable Long eventId){
+        try{
+            eventService.deleteEvent(eventId);
+            System.out.println("Request event/delete/" + eventId);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }catch (EntityNotFoundException ex){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 }
