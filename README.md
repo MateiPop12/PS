@@ -149,3 +149,78 @@ The **Observer Pattern** is a behavioral design pattern where an object, called 
 The organization of the database is depicted in the following entity diagram:
 
 ![Example Image](EntityDiagram.drawio.png)
+
+# Event Ticket Sales Management Frontend
+
+## Overview
+This JavaScript application facilitates the management of events and orders through a dynamic user interface. It includes modules for fetching and displaying events and orders, as well as interactive elements for navigation and data manipulation.
+
+## Features
+- **Event and Order Fetching:** etrieves and displays data from an API.
+- **Dynamic Navigation:** Smooth animations for a responsive navigation bar.
+- **Order Management:** Add, update, and delete orders with real-time feedback.
+- **Search Functionality:** Filter events and orders by name.
+
+## Modules
+
+### Navigation
+**navSlide**
+Handles the burger menu click event to toggle navigation links.
+
+### Rendering Pages
+**renderHomePage**
+Renders the home page by fetching and displaying events.
+
+**renderOrdersPage**
+Renders the orders page by fetching and displaying orders.
+
+### Content Management
+
+**renderContent(url)**
+Renders content based on the provided URL.
+
+**navigateTo(url)**
+Updates the browser history and renders content based on the URL.
+Page Setup
+
+**setupInitialPage**
+Renders the initial page based on the current URL.
+
+**setupPopstateEvent**
+Handles browser navigation events to render the appropriate content.
+
+**setupNavigationEvents**
+Adds event listeners to navigation links for smooth navigation.
+
+### Event Handling
+
+**addEvents(eventList)**
+Displays events and sets up interactions for event cards.
+
+**createEvent(eventData, eventsDiv)**
+Creates an event card with details and interactions.
+
+**createPopup(eventData, popupDiv)**
+Creates a popup for detailed event interactions.
+
+### Order Handling
+
+**addOrders(orderList)**
+Displays orders and sets up interactions for order cards.
+
+**createOrder(orderData, orderListDiv)**
+Creates an order card with details and interactions.
+
+**deleteOrder(orderID)**
+Deletes an order and provides real-time feedback.
+
+**updateOrder(requestBody)**
+Updates an order with new data and provides real-time feedback.
+
+**filterOrdersByEventName(searchTerm)**
+Filters orders based on the search term.
+
+### Initial Setup
+
+**app**
+The main function that initializes the application.
