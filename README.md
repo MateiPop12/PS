@@ -164,63 +164,65 @@ This JavaScript application facilitates the management of events and orders thro
 ## Modules
 
 ### Navigation
-**navSlide**
+- **navSlide**
 Handles the burger menu click event to toggle navigation links.
 
 ### Rendering Pages
-**renderHomePage**
+- **renderHomePage**
 Renders the home page by fetching and displaying events.
 
-**renderOrdersPage**
+- **renderOrdersPage**
 Renders the orders page by fetching and displaying orders.
 
 ### Content Management
 
-**renderContent(url)**
+- **renderContent(url)**
 Renders content based on the provided URL.
 
-**navigateTo(url)**
+- **navigateTo(url)**
 Updates the browser history and renders content based on the URL.
 Page Setup
 
-**setupInitialPage**
+- **setupInitialPage**
 Renders the initial page based on the current URL.
 
-**setupPopstateEvent**
+- **setupPopstateEvent**
 Handles browser navigation events to render the appropriate content.
 
-**setupNavigationEvents**
+- **setupNavigationEvents**
 Adds event listeners to navigation links for smooth navigation.
 
 ### Event Handling
 
-**addEvents(eventList)**
+- **addEvents(eventList)**
 Displays events and sets up interactions for event cards.
 
-**createEvent(eventData, eventsDiv)**
+- **createEvent(eventData, eventsDiv)**
 Creates an event card with details and interactions.
 
-**createPopup(eventData, popupDiv)**
+- **createPopup(eventData, popupDiv)**
 Creates a popup for detailed event interactions.
 
 ### Order Handling
 
-**addOrders(orderList)**
+- **addOrders(orderList)**
 Displays orders and sets up interactions for order cards.
 
-**createOrder(orderData, orderListDiv)**
+- **createOrder(orderData, orderListDiv)**
 Creates an order card with details and interactions.
 
-**deleteOrder(orderID)**
+- **deleteOrder(orderID)**
 Deletes an order and provides real-time feedback.
 
-**updateOrder(requestBody)**
+- **updateOrder(requestBody)**
 Updates an order with new data and provides real-time feedback.
 
-**filterOrdersByEventName(searchTerm)**
+- **filterOrdersByEventName(searchTerm)**
 Filters orders based on the search term.
 
 ### Initial Setup
 
-**app**
+- **app**
 The main function that initializes the application.
+
+![Example Image](TicketManagementUML.drawio.png)
