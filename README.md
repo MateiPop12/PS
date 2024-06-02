@@ -150,6 +150,15 @@ The organization of the database is depicted in the following entity diagram:
 
 ![Example Image](EntityDiagram.drawio.png)
 
+## UML diagram
+
+![Example Image](TicketManagementUML.drawio.png)
+
+## UseCase diagram
+
+![Example Image](TicketManagementUseCase.drawio.png)
+
+
 # Event Ticket Sales Management Frontend
 
 ## Overview
@@ -224,5 +233,3 @@ Filters orders based on the search term.
 
 - **app**
 The main function that initializes the application.
-
-![Example Image](TicketManagementUML.drawio.png)
